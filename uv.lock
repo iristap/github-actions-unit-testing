@@ -5,7 +5,7 @@ requires-python = ">=3.12"
 [[package]]
 name = "github-actions-unit-testing"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 
 [package.metadata]
 provides-extras = ["test", "dev"]
