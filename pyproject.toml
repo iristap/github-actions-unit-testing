@@ -1,0 +1,21 @@
+[project]
+name = "github-actions-unit-testing"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+# Dependencies ที่ใช้สำหรับการทดสอบ
+test = [
+    # add lib to use
+]
+# Dependencies for dev
+dev = [
+    # "black>=23.0"
+]
+
+[tool.setuptools.packages]
+find = {where = ["src"]}
+
