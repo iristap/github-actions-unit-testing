@@ -20,22 +20,21 @@ jobs:
 
     # B. Setup Python and install uv
     # We will use action/setup-python@v5 and set 'cache' to use uv
-    - name: Set up Python ${{ matrix.python-version }} and install uv
+    - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
-        # Automatically install uv and set up cache for it
-        cache: 'uv'
+
 
     # C. Install dependencies with uv
-    - name: Install dependencies with uv
-      # Use uv venv to create a Virtual Environment
+    - name: Install uv and dependencies with uv
+      uses: astral-sh/setup-uv@v6
+      with:
+        python-version: ${{ matrix.python-version }}
+
+      # Use uv to install dependencies
       run: |
-        uv venv
-        source .venv/bin/activate
-        # If there's a requirements.txt:
-        # uv pip install -r requirements.txt
-        # For this example, we have no external dependencies, so we'll skip this
+        uv sync
 
     # D. Run Unit Tests: Run the unit tests we wrote
     - name: Run tests with unittest
