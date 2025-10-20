@@ -1,0 +1,59 @@
+name: Python CI Workflow (Build, Test, and Deploy with UV)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ '3.10', '3.12' ] # test with Python 3.10 and 3.12
+    
+    steps:
+    # A. Checkout code
+    - name: Checkout repository code
+      uses: actions/checkout@v4
+
+    # B. Setup Python and install uv
+    # We will use action/setup-python@v5 and set 'cache' to use uv
+    - name: Set up Python ${{ matrix.python-version }} and install uv
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        # Automatically install uv and set up cache for it
+        cache: 'uv'
+
+    # C. Install dependencies with uv
+    - name: Install dependencies with uv
+      # Use uv venv to create a Virtual Environment
+      run: |
+        uv venv
+        source .venv/bin/activate
+        # If there's a requirements.txt:
+        # uv pip install -r requirements.txt
+        # For this example, we have no external dependencies, so we'll skip this
+
+    # D. Run Unit Tests: Run the unit tests we wrote
+    - name: Run tests with unittest
+      # Use the virtual environment created by uv
+      run: |
+        source .venv/bin/activate
+        python -m unittest test_calculator.py -v
+        
+  # 🚀 Job Continuous Delivery (CD)
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main' && success()
+    runs-on: ubuntu-latest
+    environment: Production
+    
+    steps:
+    - name: Deploy Placeholder (Simulated CD)
+      run: |
+        echo "--- Deployment Process Started ---"
+        echo "Artifacts are built and tests passed successfully using uv."
+        echo "Deployment to Production Environment complete at $(date)"
