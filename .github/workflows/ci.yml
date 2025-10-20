@@ -39,11 +39,12 @@ jobs:
         uv sync
 
     # D. Run Unit Tests: Run the unit tests we wrote
-    - name: Run tests with unittest
+    - name: Run tests
       # Use the virtual environment created by uv
       run: |
         source .venv/bin/activate
-        python -m unittest test_calculator.py -v
+        python -m unittest discover -s tests
+
         
   # 🚀 Job Continuous Delivery (CD)
   deploy:
