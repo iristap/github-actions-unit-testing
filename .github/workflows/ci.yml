@@ -34,6 +34,7 @@ jobs:
 
       # Use uv to install dependencies
       run: |
+        uv venv
         uv sync
 
     # D. Run Unit Tests: Run the unit tests we wrote
