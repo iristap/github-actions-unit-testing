@@ -31,7 +31,8 @@ jobs:
       uses: astral-sh/setup-uv@v6
       with:
         python-version: ${{ matrix.python-version }}
-
+        
+    - name: Install the project dependencies
       # Use uv to install dependencies
       run: |
         uv venv
