@@ -4,7 +4,7 @@
 
 A demonstration project showcasing how to set up automated unit testing with GitHub Actions using Python and the `uv` package manager. This repo includes a simple calculator module with comprehensive unit tests and a CI/CD pipeline.
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 github-actions-unit-testing/
@@ -24,7 +24,7 @@ github-actions-unit-testing/
 ```
 
 
-## 🚀 Installation
+## Installation
 
 ### uv
 
@@ -37,7 +37,7 @@ uv ven
 uv sync
 ```
 
-## 🧪 Running Tests
+## Running Tests
 
 ### Using unittest directly
 
@@ -52,7 +52,7 @@ python -m unittest tests.test_calculator
 python -m unittest discover -s tests -v
 ```
 
-## 🔄 CI/CD Pipeline
+## CI/CD Pipeline
 
 This project uses GitHub Actions for continuous integration and continuous deployment.
 
@@ -73,7 +73,7 @@ This project uses GitHub Actions for continuous integration and continuous deplo
 
 To view the CI/CD pipeline status, check the [Actions tab](https://github.com/iristap/github-actions-unit-testing/actions) in the GitHub repository.
 
-## 🧮 Calculator Module
+## Calculator Module
 
 The calculator module (`src/some_package/calculator.py`) provides four basic arithmetic operations:
 
@@ -84,7 +84,7 @@ The calculator module (`src/some_package/calculator.py`) provides four basic ari
 - **`multiply(a, b)`**: Returns the product of two numbers
 - **`divide(a, b)`**: Returns the quotient of two numbers (raises `ValueError` for division by zero)
 
-## 🔜 Incoming logging
+## Incoming logging
 if not lazy
 
 
